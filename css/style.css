@@ -1,0 +1,103 @@
+body {
+	background-image: url("https://images4.alphacoders.com/966/966314.jpg");
+	background-size: cover;
+}
+
+.grid-container1 {
+	height: 90vh;
+	width: 90vw;
+	display: grid;
+	grid-template-rows: 75px 1fr 130px;
+	grid-template-columns: 1fr 1fr 2fr;
+	grid-template-areas: "bnr bnr bnr"
+						 "inst . loc"
+						 "dis dis dis";
+	background-color: #D0E856;
+  	padding: 10px;
+  	border-radius: 10px;
+}
+
+img {
+	display:flex;
+  width: auto;
+  height: auto;
+  vertical-align: middle;
+  
+  border-color: white;
+  border-radius: 8px;
+
+}
+
+.pics_in_a_row {
+  display: flex;
+}
+
+.disasterPics {
+	display:flex;
+}
+
+#mountain { flex: 1.77; 
+
+}
+#forest { flex: 1.77; }
+#coast { flex: 1.77; }
+#Plains{ flex: 1.77; }
+
+
+#banner {
+	grid-area: bnr;
+	font-family: minecraft;
+	text-align: center;
+	color:#1766FF;
+	font-size:2.5em;
+
+}
+
+#instructions {
+	grid-area: inst;
+	font-family: minecraft;
+	text-align: center;
+	color:#1766FF;
+	font-size:2em;
+
+}
+
+#location {
+	grid-area: loc;
+	display: grid;
+	grid-template-areas:;
+	font-family: minecraft;
+	text-align: center;
+	color:#1766FF;
+	font-size:2em;
+}
+
+#disasters {
+	grid-area: dis;
+	
+	font-family: minecraft;
+	text-align: center;
+	color:#1766FF;
+	font-size:2em;
+}
+
+.grid-container2 {
+	display: none;
+	height:90%;
+	width: 85%;
+	grid-template-rows: 50px 1fr;
+	grid-template-columns: 3fr 1fr; 
+	grid-template-areas: "bnr bnr bnr"
+						 ". . . "
+
+}
+
+.grid-container3 {
+	display: none;
+	height: 90%;
+	width: 85%;
+	grid-template-rows: 50px 1fr;
+	grid-template-areas: "bnr"
+						 "."
+}
+

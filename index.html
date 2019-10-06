@@ -6,28 +6,60 @@
 </head>
 <body>
 
+
 	<div class="grid-container1">
   		<div class="grid-item" id="banner">Survival!</div>
   		<div class="grid-item" id="instructions">Instructions</div>
-  		<div class="grid-item" id="location">Choices</div>
-  		<div class="grid-item" id="disasters">Disasters</div>	
+
+  		<div class="grid-item" id="location">Choices
+  			<input type="text" id="input-box" placeholder="Village name"/>
+			<input type="submit" id="submit-btn" />
+				<div id="Pick">Click on your location</div>
+
+			<div class = "pics_in_a_row">
+
+				<img id ="mountain" src = "images/mountainSized.png">
+
+				<img id="coast" src = "images/coastSized.png">
+
+				<img id="plains" src = "images/PlainsSized.png">
+
+				<img id="forest"  src = "images/forestSized.png">
+
+			</div>
+		</div>
+  		
+			
+  		<div class="grid-item" id="disasters">Disasters
+
+  			<div class= "disasterPics">
+
+  				<img id = "fire" src = "images/Fire.png">
+  				<img id = "tornado" src = "images/Tornado.png">
+  				<img id = "tsunami" src = "images/bigwave.jpeg">
+  				<img id = "volano" src = "images/Volcano.png">
+  			</div>
+	</div>
+
+
+
+
+
 	</div>
 
 	<div class="grid-container2">
-		<div class="grid-item" id="banner">Survival!</div>
 		<div class="grid-item" id="environment">Environment</div>
-		<div class="grid-item" id="timer">Timer</div>
 		<div class="grid-item" id="build">Build!</div>
 	</div>
 
 	<div class="grid-container3">
-		<div class="grid-item" id="banner">Survival!</div>
 		<div class="grid-item" id="gameEnv">Environment</div>
 		<div class="grid-item" id="score">Score</div>
 	</div>
-		<div class="grid-item" id="banner">Survival!</div>
+	
 		
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
 
-<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>
