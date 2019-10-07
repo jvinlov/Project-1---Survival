@@ -65,13 +65,13 @@ img {
 }
 
 .pics_in_a_row {
-  display: flex;
+  display: none;
   justify-content: space-between;
 }
 
 .disasterPics {
 	
-	display:flex;
+	display:none;
   	justify-content: space-around;
 }
 
