@@ -4,36 +4,61 @@ body {
 }
 
 .grid-container1 {
-	height: 90vh;
-	width: 90vw;
+	/*height: 100vh;
+	width: 100vw;*/
 	display: grid;
-	grid-template-rows: 75px 1fr 130px;
-	grid-template-columns: 1fr 1fr 2fr;
+	grid-template-rows: 50px 1fr 300px;
+	grid-template-columns: 300px 100px 1fr;
 	grid-template-areas: "bnr bnr bnr"
 						 "inst . loc"
 						 "dis dis dis";
-	background-color: #D0E856;
+	background-color: #fff787;
   	padding: 10px;
-  	border-radius: 10px;
+  	border-radius: 20px;
 }
 
+.inputs {
+	align-content: center;
+	align-items: center;
+}
+
+input {
+	/*display: flex;*/
+	/*width: 50%;*/
+	background-color: #6FE87B;
+  	color: white;
+  	text-align: center;
+  	border: 2px solid #3AEB28;
+  	border-radius: 8px;
+
+}
+
+form {
+	max-width: 300px;
+	margin: 0 auto;
+}
+
+
+
 img {
-	display:flex;
+	display:inline-block;
   width: auto;
   height: auto;
   vertical-align: middle;
-  
-  border-color: white;
+  border-color: black;
   border-radius: 8px;
 
 }
 
 .pics_in_a_row {
   display: flex;
+  justify-content: space-between;
 }
 
 .disasterPics {
+	
 	display:flex;
+  	justify-content: space-around;
 }
 
 #mountain { flex: 1.77; 
@@ -50,6 +75,7 @@ img {
 	text-align: center;
 	color:#1766FF;
 	font-size:2.5em;
+	grid-column: 1 / span 3;
 
 }
 
@@ -58,39 +84,73 @@ img {
 	font-family: minecraft;
 	text-align: center;
 	color:#1766FF;
-	font-size:2em;
+	font-size:1em;
+}
 
+#rules {
+	display:flex;
+	font-family: minecraft;
+	text-align: left;
+	font-size: 1em;
+
+}
+
+li {
+	padding:.5em;
 }
 
 #location {
 	grid-area: loc;
-	display: grid;
-	grid-template-areas:;
 	font-family: minecraft;
 	text-align: center;
 	color:#1766FF;
-	font-size:2em;
+	font-size:1em;
+}
+
+#location p{
+	font-size: 1.2em;
 }
 
 #disasters {
 	grid-area: dis;
-	
 	font-family: minecraft;
 	text-align: center;
 	color:#1766FF;
-	font-size:2em;
+	font-size:1.7em;
+	grid-column: 1 / span 3;
 }
 
 .grid-container2 {
 	display: none;
-	height:90%;
-	width: 85%;
+	height:90vh;
+	width: 85vw;
 	grid-template-rows: 50px 1fr;
 	grid-template-columns: 3fr 1fr; 
 	grid-template-areas: "bnr bnr bnr"
-						 ". . . "
+						 "env env bld ";
+	background-color: #D0E856;
+  	padding: 10px;
+  	border-radius: 20px;
 
 }
+
+	#environment {
+		grid-area: env;
+		font-family: minecraft;
+		text-align: left;
+		color:#1766FF;
+		font-size:2em;
+
+	}
+
+	#build {
+		grid-area: bld;
+		font-family: minecraft;
+		text-align: left;
+		color:#1766FF;
+		font-size:2em;
+
+	}
 
 .grid-container3 {
 	display: none;

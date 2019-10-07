@@ -9,35 +9,74 @@
 
 	<div class="grid-container1">
   		<div class="grid-item" id="banner">Survival!</div>
-  		<div class="grid-item" id="instructions">Instructions</div>
+  		<div class="grid-item" id="instructions">
+  			<h2>Instructions</h2>
+  			<div id="rules">
+  				<ul>
+  					<li>Grow your population!</li>
+  					<li>After choosing your name and environment, you will have two minutes to build your village</li>
+  					<li>A disaster will randomly appear and wipe out a portion of your poulation</li>
+  					<li>At the end of the round your points will be totaled and compared to the other player</li>
+  				</ul>
+  			</div>
+  		</div>
 
-  		<div class="grid-item" id="location">Choices
-  			<input type="text" id="input-box" placeholder="Village name"/>
-			<input type="submit" id="submit-btn" />
-				<div id="Pick">Click on your location</div>
+  		<div class="grid-item" id="location">
+  			<h2>Name Your Village:</h2>
+  			<div class=inputs>
+  				<form>
+  					<input type="text" id="input-box" placeholder="Village name">
+					<input type="submit" id="submit-btn">
+				</form>
+			</div>
+
+				<p>Click on your environment</p>
 
 			<div class = "pics_in_a_row">
+				<div id = "mountainText">
+					<h4>Mountain</h4>
+					<img id ="mountain" src = "images/mountainSized.png">
+				</div>
 
-				<img id ="mountain" src = "images/mountainSized.png">
+				<div id = "coastText">
+					<h4>Coast</h4>
+					<img id="coast" src = "images/coastSized.png">
+				</div>
 
-				<img id="coast" src = "images/coastSized.png">
+				<div id = "plainsText">
+					<h4>Plains</h4>
+					<img id="plains" src = "images/PlainsSized.png">
+				</div>
 
-				<img id="plains" src = "images/PlainsSized.png">
-
-				<img id="forest"  src = "images/forestSized.png">
+				<div id = "forestText">
+					<h4>Forest</h4>
+					<img id="forest"  src = "images/forestSized.png">
+				</div>
 
 			</div>
 		</div>
   		
 			
-  		<div class="grid-item" id="disasters">Disasters
+  		<div class="grid-item" id="disasters">
+  			<p>Disasters!</p>
 
   			<div class= "disasterPics">
-
-  				<img id = "fire" src = "images/Fire.png">
-  				<img id = "tornado" src = "images/Tornado.png">
-  				<img id = "tsunami" src = "images/bigwave.jpeg">
-  				<img id = "volano" src = "images/Volcano.png">
+  				<div id = "fireText">
+  					<img id = "fire" src = "images/Fire.png">
+  					<p>Fire!</p>
+  				</div>
+  				<div id= "tornadoText">
+  					<img id = "tornado" src = "images/Tornado.png">
+  					<p>Tornado!</p>
+  				</div>
+  				<div id = "tsunamiText">
+  					<img id = "tsunami" src = "images/bigwave.jpeg">
+  					<p>Tsunami!</p>
+  				</div>
+  				<div id = "volcanoText">
+  					<img id = "volano" src = "images/Volcano.png">
+  					<p>Volcano!</p>
+  				</div>
   			</div>
 	</div>
 
@@ -48,6 +87,7 @@
 	</div>
 
 	<div class="grid-container2">
+		<div class="grid-item" id="banner">Survival!</div>
 		<div class="grid-item" id="environment">Environment</div>
 		<div class="grid-item" id="build">Build!</div>
 	</div>
