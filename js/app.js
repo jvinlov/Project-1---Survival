@@ -31,6 +31,7 @@ $('.pics_in_a_row').on('click', (e) =>{
 	e.preventDefault();
 	const $playerEnvironment = $(e.target).attr('id');
 	const $playerPicture = $(e.target).attr('src');
+	const villagePicture = $('<img>').attr('src', $playerPicture);
 	
 	$('.environment h2').text(`You picked ${$playerEnvironment}`);
 	$('.disasterPics').css('display', 'flex');
@@ -40,7 +41,7 @@ $('.pics_in_a_row').on('click', (e) =>{
 		$('.grid-container1').css('display', 'none');
 		$('.grid-container2').css('display', 'grid');
 		$('#playerVillage h3').text(villageName);
-		$('#playerVillage').append($playerPicture);
+		$('#playerVillage').css({'background-image' :`url(${$playerPicture})`, 'background-size': 'cover'});
 
 	});
 	$('#disasters h2').append($continu)
@@ -72,6 +73,11 @@ const village = {
 
 		addHut () {
 			$('#hut-btn').on('click', (e) => {
+
+				if (this.credits<20) {
+					alert("Insufficient funds!");
+					return;
+				}
 				
 				this.hut ++;
 				this.credits -=20;
@@ -81,6 +87,7 @@ const village = {
 				$('#gameCredits').text(`Credits: ${this.credits}`);
 				$('#gameScore').text(`Score: ${this.score}`);
 				$('#gamePop').text(`Population: ${this.population}`);
+				$('#playerVillage').append('')
 	
 		
 				});
@@ -89,6 +96,11 @@ const village = {
 
 		addHiRise () {
 			$('#hiRise-btn').on('click', (e) => {
+
+				if (this.credits<100) {
+					alert("Insufficient funds!");
+					return;
+				}
 
 				this.hiRise ++;
 				this.credits -=80;
