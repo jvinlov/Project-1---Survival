@@ -65,6 +65,25 @@ form {
 	margin: 0 auto;
 }
 
+#bldgButton {
+text-align: center;
+justify-content: space-around;
+padding:10px;
+
+}
+.gameButton {
+  background-color: green; /* Green */
+  border: none;
+  color: #3AEB28;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  font-family: minecraft;
+  border-radius: 10px;
+  justify-content: space-around;
+}
 
 
 img {
@@ -193,6 +212,21 @@ li {
 		border-radius: 5px;
 
 	}
+.statsContainer {
+	border: 2px solid #3AEB28;
+  	border-radius: 5px;
+  	border-width: 50%
+  	padding: 5px;
+  	font-size:.5em;
+}
+
+.description {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 100%;
+  flex: 1;
+  font-size: .7em;
+}
 
 .grid-container3 {
 	display: none;

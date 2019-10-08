@@ -9,7 +9,7 @@ let $continu = $('<button type="submit" id="continue-btn">Continue...</button>')
 
 let villageName;
 
-let playerPicture;
+let $playerPicture;
 
 $('button').on('click', (e) => {
 	e.preventDefault();
@@ -40,7 +40,8 @@ $('.pics_in_a_row').on('click', (e) =>{
 		$('.grid-container1').css('display', 'none');
 		$('.grid-container2').css('display', 'grid');
 		$('#playerVillage h3').text(villageName);
-		$('#playerVillage').html(playerPicture);
+		$('#playerVillage').append($playerPicture);
+
 	});
 	$('#disasters h2').append($continu)
 	wait (500);
@@ -51,19 +52,72 @@ $('.pics_in_a_row').on('click', (e) =>{
 
 
 
-class Village {
+const village = {
 
-	constructor() {
-		this.population = 20;
-		this.hut=2;
-		this.hiRise=0;
-		this.credits=200;
-		this.score= 40;
+	
+		population: 20,
+		hut: 2,
+		hiRise: 0,
+		credits: 200,
+		score: 40,
+
+		gamePlay () {
+			$('#gamePop').text(`Population: ${this.population}`);
+			$('#gameHuts').text(`Huts: ${this.hut}`);
+			$('#gameHiRise').text(`High Rises: ${this.hiRise}`);
+			$('#gameCredits').text(`Credits: ${this.credits}`);
+			$('#gameScore').text(`Score: ${this.score}`);
+		
+		},
+
+		addHut () {
+			$('#hut-btn').on('click', (e) => {
+				
+				this.hut ++;
+				this.credits -=20;
+				this.score +=10;
+				this.population +=5;
+				$('#gameHuts').text(`Huts: ${this.hut}`);
+				$('#gameCredits').text(`Credits: ${this.credits}`);
+				$('#gameScore').text(`Score: ${this.score}`);
+				$('#gamePop').text(`Population: ${this.population}`);
+	
+		
+				});
+
+			},
+
+		addHiRise () {
+			$('#hiRise-btn').on('click', (e) => {
+
+				this.hiRise ++;
+				this.credits -=80;
+				this.score +=30;
+				this.population +=20;
+				$('#gameHiRise').text(`High Rises: ${this.hiRise}`);
+				$('#gameCredits').text(`Credits: ${this.credits}`);
+				$('#gameScore').text(`Score: ${this.score}`);
+				$('#gamePop').text(`Population: ${this.population}`);
+
+
+
+
+			});
+			
+		}
+
+
 	}
-};
 
-const civ = new Village;
-console.log(civ);
+	
+
+
+
+
+village.gamePlay();
+village.addHut();
+village.addHiRise();
+
 
 class Building {
 
@@ -83,6 +137,13 @@ console.log(hiRise);
 const hut = new Building(10, 5, 20, 1000);
 console.log(hut);
 
+
+const build =  {
+
+
+	
+
+}
 
 
 
