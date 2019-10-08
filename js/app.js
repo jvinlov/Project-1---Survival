@@ -37,7 +37,6 @@ $('.pics_in_a_row').on('click', (e) =>{
 	$('.disasterPics').css('display', 'flex');
 	$continu.on('click', (e) => {
 		e.preventDefault();
-		console.log('yes');
 		$('.grid-container1').css('display', 'none');
 		$('.grid-container2').css('display', 'grid');
 		$('#playerVillage h3').text(villageName);
@@ -51,7 +50,8 @@ $('.pics_in_a_row').on('click', (e) =>{
 });
 
 
-
+const hutPicture = $('<img>').attr('src', 'images/hutSized.png');
+const hiRisePicture = $('<img>').attr('src', 'images/hiRiseSized.jpg');
 
 const village = {
 
@@ -87,7 +87,7 @@ const village = {
 				$('#gameCredits').text(`Credits: ${this.credits}`);
 				$('#gameScore').text(`Score: ${this.score}`);
 				$('#gamePop').text(`Population: ${this.population}`);
-				$('#playerVillage').append('')
+				$('#playerVillage').append(hutPicture);
 	
 		
 				});
@@ -110,7 +110,7 @@ const village = {
 				$('#gameCredits').text(`Credits: ${this.credits}`);
 				$('#gameScore').text(`Score: ${this.score}`);
 				$('#gamePop').text(`Population: ${this.population}`);
-
+				$('#playerVillage').append(hiRisePicture);
 
 
 
@@ -144,10 +144,10 @@ class Building {
 };
 
 const hiRise = new Building(30, 20, 100, 3000);
-console.log(hiRise);
+
 
 const hut = new Building(10, 5, 20, 1000);
-console.log(hut);
+
 
 
 const build =  {
