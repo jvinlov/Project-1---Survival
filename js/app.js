@@ -48,11 +48,14 @@ $('.pics_in_a_row').on('click', (e) =>{
 
 
 });
+let buildHutInterval;
+let buildHiRiseInterval;
 
 $('#create-btn').on('click', (e) => {
 	e.preventDefault();
 	$('#create-btn').remove();
 	$('#build p').text("When will the disaster hit?");
+	$('.gameButton').attr('disabled', false);
 
 	const generateDisaster = (arg) => {
 	
@@ -60,25 +63,41 @@ $('#create-btn').on('click', (e) => {
 	const rndDis = disaster[rnd];
 	console.log(rndDis);
 }
+	generateDisaster();
 
 		const rand = (Math.round(Math.random()* 60000)+ 30000);
 		console.log(rand);
+
+
 		const interval = setInterval(() => { 
 		
+			// if rand seconds, then clear buildHut Interval
+
+			// if( =rand) {
+
+
+			// }
+
+
 		}, (rand) ) 
 
 })
 
 
-const hutPicture = $('<img>').attr('src', 'images/hutSized.png');
-const hiRisePicture = $('<img>').attr('src', 'images/hiRiseSized.jpg');
+// once the timer runs out:
 
-// $('#create-btn'.on('click'), (e) =>{
-// 	e.preventDefault();
+// animate disaster over background
+// total score (show calculations?) - 
+	// (x) disaster did (x) population damage
+				// (x) hut damage
+			   	// (x) hiRise damage
+// on continue button
+	// go to third screen
+		 // show player 1 total score: pop + huts + hiRise + credits
+		 // start player 2 (loop back to start)
 
-// 	const playerDisaster = 
 
-// });
+
 
 const village = {
 
@@ -114,7 +133,18 @@ const village = {
 				$('#gameCredits').text(`Credits: ${this.credits}`);
 				$('#gameScore').text(`Score: ${this.score}`);
 				$('#gamePop').text(`Population: ${this.population}`);
-				$('#playerVillage').append(hutPicture);
+				
+
+				buildHutInterval = setInterval(()=>{
+
+					// if 15 seconds, then append hut and clear interval
+
+
+					const hutPicture1 = $('<img>').attr('src', 'images/hutSized.png');
+					$('#playerVillage').append(hutPicture1);
+					clearInterval(buildHutInterval);
+
+				}, 15000)
 	
 		
 				});
@@ -137,7 +167,20 @@ const village = {
 				$('#gameCredits').text(`Credits: ${this.credits}`);
 				$('#gameScore').text(`Score: ${this.score}`);
 				$('#gamePop').text(`Population: ${this.population}`);
-				$('#playerVillage').append(hiRisePicture);
+				const hiRisePicture1 = $('<img>').attr('src', 'images/hiRiseSized.jpg');
+
+				buildHiRiseInterval = setInterval(()=>{
+
+					// if 15 seconds, then append hiRise and clear interval
+
+
+				
+					$('#playerVillage').append(hiRisePicture1);
+					clearInterval(buildHiRiseInterval);
+
+				}, 15000)
+
+			
 
 
 
