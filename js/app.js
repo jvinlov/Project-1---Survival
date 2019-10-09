@@ -49,6 +49,26 @@ $('.pics_in_a_row').on('click', (e) =>{
 
 });
 
+$('#create-btn').on('click', (e) => {
+	e.preventDefault();
+	$('#create-btn').remove();
+	$('#build p').text("When will the disaster hit?");
+
+	const generateDisaster = (arg) => {
+	
+	const rnd= Math.floor(Math.random() * disaster.length)
+	const rndDis = disaster[rnd];
+	console.log(rndDis);
+}
+
+		const rand = (Math.round(Math.random()* 60000)+ 30000);
+		console.log(rand);
+		const interval = setInterval(() => { 
+		
+		}, (rand) ) 
+
+})
+
 
 const hutPicture = $('<img>').attr('src', 'images/hutSized.png');
 const hiRisePicture = $('<img>').attr('src', 'images/hiRiseSized.jpg');
@@ -191,13 +211,8 @@ const disaster = [
 	
 ]
 
-const generateDisaster = (arg) => {
-	
-	const rnd= Math.floor(Math.random() * disaster.length)
-	const rndDis = disaster[rnd]
-	console.log(rndDis);
-}
-generateDisaster();
+
+
 
 	
 
