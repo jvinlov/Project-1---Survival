@@ -53,6 +53,13 @@ $('.pics_in_a_row').on('click', (e) =>{
 const hutPicture = $('<img>').attr('src', 'images/hutSized.png');
 const hiRisePicture = $('<img>').attr('src', 'images/hiRiseSized.jpg');
 
+// $('#create-btn'.on('click'), (e) =>{
+// 	e.preventDefault();
+
+// 	const playerDisaster = 
+
+// });
+
 const village = {
 
 	
@@ -97,7 +104,7 @@ const village = {
 		addHiRise () {
 			$('#hiRise-btn').on('click', (e) => {
 
-				if (this.credits<100) {
+				if (this.credits<80) {
 					alert("Insufficient funds!");
 					return;
 				}
@@ -116,7 +123,13 @@ const village = {
 
 			});
 			
-		}
+		},
+
+		damage() {
+			
+
+
+	},
 
 
 	}
@@ -149,15 +162,44 @@ const hiRise = new Building(30, 20, 100, 3000);
 const hut = new Building(10, 5, 20, 1000);
 
 
+const disaster = [
+	{
+		name: "Fire",
+		popDam: 10,
+		hutDam: 3,
+		hiRiseDam: 1
 
-const build =  {
+	},	{
+		name: "Tsuanmi",
+		popDam: 40,
+		hutDam: 3,
+		hiRiseDam: 2
 
+	},	{
+		name: "Volcano",
+		popDam: 30,
+		hutDam: 5,
+		hiRiseDam: 2
+
+	},	{
+		name: "Tornado",
+		popDam: 10,
+		hutDam: 2,
+		hiRiseDam: 0,
+
+	}
+	
+]
+
+const generateDisaster = (arg) => {
+	
+	const rnd= Math.floor(Math.random() * disaster.length)
+	const rndDis = disaster[rnd]
+	console.log(rndDis);
+}
+generateDisaster();
 
 	
-
-}
-
-
 
 
 
