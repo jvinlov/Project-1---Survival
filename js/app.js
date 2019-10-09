@@ -10,6 +10,7 @@ let $continu = $('<button type="submit" id="continue-btn">Continue...</button>')
 let villageName;
 
 let $playerPicture;
+let $disasterPicture;
 
 $('button').on('click', (e) => {
 	e.preventDefault();
@@ -52,26 +53,50 @@ let buildHutInterval;
 let buildHiRiseInterval;
 
 $('#create-btn').on('click', (e) => {
+
+
 	e.preventDefault();
+
 	$('#create-btn').remove();
 	$('#build p').text("When will the disaster hit?");
 	$('.gameButton').attr('disabled', false);
+	let finalDisaster;
 
 	const generateDisaster = (arg) => {
 	
-	const rnd= Math.floor(Math.random() * disaster.length)
-	const rndDis = disaster[rnd];
+		const rnd= Math.floor(Math.random() * disaster.length)
+		const rndDis = disaster[rnd];
+		finalDisaster = $('<img>').attr('src', rndDis.picture);
+
+	// const $disasterPicture = $(rndDis).attr('src');
+
 	console.log(rndDis);
-}
+	}
+	
 	generateDisaster();
 
-		const rand = (Math.round(Math.random()* 60000)+ 30000);
-		console.log(rand);
-
-
-		const interval = setInterval(() => { 
+	const rand = (Math.round(Math.random()* 6000)+ 3000);
+	
+	const interval = setInterval(() => { 
 		
 			// if rand seconds, then clear buildHut Interval
+			wait(rand);
+			console.log(finalDisaster);
+
+			$('#playerVillage').append(finalDisaster);
+			console.log($('#playerVillage'));
+
+			console.log('game over');
+			
+			clearInterval(interval);
+
+			// apply damage
+			// if($rndDis = 'volcano'){}
+
+			// if($playerEnvironment="mountain")
+			
+			// $('#playerVillage').append(finalDisaster);
+
 
 			// if( =rand) {
 
@@ -80,6 +105,8 @@ $('#create-btn').on('click', (e) => {
 
 
 		}, (rand) ) 
+	
+	
 
 })
 
@@ -144,7 +171,7 @@ const village = {
 					$('#playerVillage').append(hutPicture1);
 					clearInterval(buildHutInterval);
 
-				}, 15000)
+				}, 500)
 	
 		
 				});
@@ -178,7 +205,7 @@ const village = {
 					$('#playerVillage').append(hiRisePicture1);
 					clearInterval(buildHiRiseInterval);
 
-				}, 15000)
+				}, 300)
 
 			
 
@@ -230,25 +257,31 @@ const disaster = [
 		name: "Fire",
 		popDam: 10,
 		hutDam: 3,
-		hiRiseDam: 1
+		hiRiseDam: 1,
+		picture: 'images/Fire.png'
 
 	},	{
 		name: "Tsuanmi",
 		popDam: 40,
 		hutDam: 3,
-		hiRiseDam: 2
+		hiRiseDam: 2,
+		picture: 'images/bigwave.jpeg'
 
 	},	{
 		name: "Volcano",
 		popDam: 30,
 		hutDam: 5,
-		hiRiseDam: 2
+		hiRiseDam: 2,
+		picture: 'images/Volcano.png'
+		
+
 
 	},	{
 		name: "Tornado",
 		popDam: 10,
 		hutDam: 2,
 		hiRiseDam: 0,
+		picture: 'images/Tornado.png'
 
 	}
 	
