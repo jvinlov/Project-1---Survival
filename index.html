@@ -17,6 +17,7 @@
   					<li>After choosing your name and environment, you will have two minutes to build your village</li>
   					<li>A disaster will randomly appear and wipe out a portion of your poulation</li>
   					<li>At the end of the round your points will be totaled and compared to the other player</li>
+  					<li>Population: 1pt Credits: Half a point</li>
   				</ul>
   			</div>
   		</div>
@@ -104,7 +105,7 @@
 	      		<div class = "stats" id="gameHuts">Huts: </div>
 	      		<div class = "stats" id="gameHiRise">High Rises: </div>
 	      		<div class = "stats" id="gameCredits">Credits: </div>
-	      		<div class = "stats" id="gameScore">Score: </div>
+	      		<!-- <div class = "stats" id="gameScore">Score: </div> -->
 	      	</div>
 	      	<div id = "bldgButton">
 
@@ -144,8 +145,18 @@
 
 
 	<div class="grid-container3">
-		<div class="grid-item" id="gameEnv">Environment</div>
-		<div class="grid-item" id="score">Score</div>
+		<div class="grid-item" id="gameScores">Player Scores:
+			<div id="Player1">
+				<p> Player 1</p>
+			</div>
+			<div id = "Player2">	
+				<p> Player 2</p>
+			</div>
+		</div>
+
+		<div class="grid-item" id="score">Score
+			<button type="submit" id="pl2-btn">Player 2 Start</button>
+		</div>
 	</div>
 	
 		

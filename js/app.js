@@ -7,18 +7,42 @@ function wait(ms) {
 
 let $continu = $('<button type="submit" id="continue-btn">Continue...</button>')
 
-let villageName;
+let $continu2 = $('<button type="submit" id="continue-btn2">Continue...</button>')
 
-let $playerPicture;
+let $villageName1;
+
+let $villageName2;
+
+let $playerPicture1;
+
+let $playerPicture2;
+
+let villagePicture1;
+
+let villagePicture2;
+
+let $playerEnvironment1;
+
+let $playerEnvironment2;
+
 let $disasterPicture;
+
+let $finalScore;
 
 $('button').on('click', (e) => {
 	e.preventDefault();
-	villageName = $('#villageInput').val();
+	if($villageName1){
+		$('#villageInput').val('');
+		$villageName2 = $('#villageInput').val();
+		$('.inputs').append(`${$villageName2}!`);
+	} else {
+		$villageName1 = $('#villageInput').val();
+		$('.inputs').append(`${$villageName1}!`);
+	}
 	
 	$('#villageInput').remove();
 	$('#submit-btn').remove();
-	$('.inputs').append(`${villageName}!`);
+	// $('.inputs').append(`${$villageName}!`);
 	$('#location h2').text('Long live');
 	
 	wait (100);
@@ -30,18 +54,47 @@ $('button').on('click', (e) => {
 
 $('.pics_in_a_row').on('click', (e) =>{
 	e.preventDefault();
-	const $playerEnvironment = $(e.target).attr('id');
-	const $playerPicture = $(e.target).attr('src');
-	const villagePicture = $('<img>').attr('src', $playerPicture);
+	console.log('e.target: ', $(e.target))
+	if ($villageName2) {
+
+	$playerEnvironment2 = $(e.target).attr('id');
+	console.log('$playerEnvironment2: ', $playerEnvironment2)
+	$playerPicture2 = $(e.target).attr('src');
+	console.log('$playerPicture2: ', $playerPicture2)
+	villagePicture2 = $('<img>').attr('src', $playerPicture2);
+	console.log('villagePicture2: ', villagePicture2)
+	$('.environment h2').text(`You picked ${$playerEnvironment2}`);
+
+	} else if ($villageName1){
+		$playerEnvironment1 = $(e.target).attr('id');
+		console.log('$playerEnvironment1: ', $playerEnvironment1)
+		$playerPicture1 = $(e.target).attr('src');
+		console.log('$playerPicture1: ', $playerPicture1)
+		villagePicture1 = $('<img>').attr('src', $playerPicture1);
+		console.log('villagePicture1: ', villagePicture1)
+		$('.environment h2').text(`You picked ${$playerEnvironment1}`);
+	}
+
 	
-	$('.environment h2').text(`You picked ${$playerEnvironment}`);
+	
 	$('.disasterPics').css('display', 'flex');
+	
+
 	$continu.on('click', (e) => {
 		e.preventDefault();
+		console.log('$playerPicture1 here: ', $playerPicture1)
 		$('.grid-container1').css('display', 'none');
 		$('.grid-container2').css('display', 'grid');
-		$('#playerVillage h3').text(villageName);
-		$('#playerVillage').css({'background-image' :`url(${$playerPicture})`, 'background-size': 'cover'});
+
+		if($villageName2) {
+			$('#playerVillage h3').text($villageName2);
+			$('#playerVillage').css({'background-image' :`url(${$playerPicture2})`, 'background-size': 'cover'});
+		
+		} else if ($villageName1){
+			$('#playerVillage h3').text($villageName1);
+			$('#playerVillage').css({'background-image' : `url(${$playerPicture1})`, 'background-size': 'cover'});
+		}
+
 
 	});
 	$('#disasters h2').append($continu)
@@ -51,6 +104,8 @@ $('.pics_in_a_row').on('click', (e) =>{
 });
 let buildHutInterval;
 let buildHiRiseInterval;
+let finalScore1;
+let finalScore2;
 
 $('#create-btn').on('click', (e) => {
 
@@ -62,7 +117,6 @@ $('#create-btn').on('click', (e) => {
 	$('.gameButton').attr('disabled', false);
 	let finalDisaster;
 	let rndDis;
-	let finalScore;
 
 	const generateDisaster = (arg) => {
 	
@@ -87,6 +141,11 @@ $('#create-btn').on('click', (e) => {
 						if (village.hut < 0) {
 							village.hut = 0;
 						}
+
+				$('#gameHuts').text(`Huts: ${village.hut} Damage: ${rndDis.hutDam}`);
+				$('#gameCredits').text(`Credits: ${village.credits}`);
+				$('#gameHiRise').text(`High Rise: ${village.hiRise} Damage: ${rndDis.hiRiseDam}`)
+				$('#gamePop').text(`Population: ${village.population} Damage: ${rndDis.popDam}`);			
 				}
 
 	
@@ -104,6 +163,8 @@ $('#create-btn').on('click', (e) => {
 			console.log('game over');
 			
 			clearInterval(interval);
+			// clearInterval(buildHutInterval);
+			// clearInterval(buildHiRiseInterval);
 
 			$('#playerVillage').append(finalDisaster);
 		 // apply damage
@@ -139,32 +200,76 @@ $('#create-btn').on('click', (e) => {
 
 
 		const playerScore = () => {
+			if(finalScore1){
+			finalScore2 = (village.population + (village.hut * 10) + (village.hiRise * 30) + (village.credits /2));
+				$('#playerVillage').append(`Your final score is: ${finalScore2}`);
+			} else {
+				finalScore1 = (village.population + (village.hut * 10) + (village.hiRise * 30) + (village.credits /2));
+					$('#playerVillage').append(`Your final score is: ${finalScore1}`);
+			}
 
-			finalScore = (village.population + (village.hut * 10) + (village.hiRise * 30) + village.credits);
-
-			console.log(finalScore); 
+			
+			
 
 		}
 
 		playerScore();
 
+		$continu2.on('click', (e) => {
+		e.preventDefault();
+		$('.grid-container2').css('display', 'none');
+		$('.grid-container3').css('display', 'grid');
+		
+		$('#Player1 p').text($villageName1 + " " + finalScore1);
+
+		sessionStorage.setItem('player1Score', finalScore1);
+		sessionStorage.setItem('player1Name', $villageName1);
+
+		// $('#villageInput').text('');
+
+		$('#Player2 p').text("Ready to challenge?");
+
+		$('#pl2-btn').on('click', (e) => {
+
+			
+			
+			//  restart from grid contaner 1, all cleared
+			 $('#villageInput').val('');
+			// $playerEnvironment.reset();
+			// $playerPicture.reset();
+			// finalDisaster.reset();
+			// rndDis.reset();
+			// finalScore.reset();
+
+			$('.grid-container3').css('display', 'none');
+			$('.grid-container1').css('display', 'grid');
+
+
+
+		})
+
+		//	after Player 2, compare scores and declare winner
+
+		// if (pl1FinalScore > pl2FinalScore){
+		// 	console.log ("Player 1 Wins!");
+		// } else if
+
+		//  (pl1FinalScore === pl2FinalScore){
+		// 	console.log ("It's a tie!");
+		// } else if 
+
+		// (pl1FinalScore < pl2FinalScore){
+		// 	console.log ("Player 2 Wins!")
+		// } 
+
+	});
+
+	$('.description').append($continu2)
+
+
+
 	}, (rand))
 	});
-			
-
-
-// once the timer runs out:
-
-// animate disaster over background
-// total score (show calculations?) - 
-	// (x) disaster did (x) population damage
-				// (x) hut damage
-			   	// (x) hiRise damage
-// on continue button
-	// go to third screen
-		 // show player 1 total score: pop + huts + hiRise + credits
-		 // start player 2 (loop back to start)
-
 
 
 
@@ -182,7 +287,7 @@ const village = {
 			$('#gameHuts').text(`Huts: ${this.hut}`);
 			$('#gameHiRise').text(`High Rises: ${this.hiRise}`);
 			$('#gameCredits').text(`Credits: ${this.credits}`);
-			$('#gameScore').text(`Score: ${this.score}`);
+			// $('#gameScore').text(`Score: ${this.score}`);
 		
 		},
 
@@ -200,7 +305,7 @@ const village = {
 				this.population +=5;
 				$('#gameHuts').text(`Huts: ${this.hut}`);
 				$('#gameCredits').text(`Credits: ${this.credits}`);
-				$('#gameScore').text(`Score: ${this.score}`);
+				// $('#gameScore').text(`Score: ${this.score}`);
 				$('#gamePop').text(`Population: ${this.population}`);
 				
 
@@ -236,16 +341,14 @@ const village = {
 				$('#gameCredits').text(`Credits: ${this.credits}`);
 				$('#gameScore').text(`Score: ${this.score}`);
 				$('#gamePop').text(`Population: ${this.population}`);
-				const hiRisePicture1 = $('<img>').attr('src', 'images/hiRiseSized.jpg');
 
 
 
 				buildHiRiseInterval = setInterval(()=>{
 
 					// if 15 seconds, then append hiRise and clear interval
-
-
 				
+					const hiRisePicture1 = $('<img>').attr('src', 'images/hiRiseSized.jpg');
 					$('#playerVillage').append(hiRisePicture1);
 					clearInterval(buildHiRiseInterval);
 

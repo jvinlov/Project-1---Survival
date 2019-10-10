@@ -228,6 +228,7 @@ li {
   font-family: minecraft;
   border-radius: 10px;
   justify-content: space-around;
+  margin: auto;
 }
 
 .statsContainer {
