@@ -61,20 +61,38 @@ $('#create-btn').on('click', (e) => {
 	$('#build p').text("When will the disaster hit?");
 	$('.gameButton').attr('disabled', false);
 	let finalDisaster;
-	let rndDis
+	let rndDis;
+	let finalScore;
 
 	const generateDisaster = (arg) => {
 	
-		const rnd= Math.floor(Math.random() * disaster.length)
+		const rnd= Math.floor(Math.random() * disaster.length);
 		rndDis = disaster[rnd];
 		finalDisaster = $('<img>').attr('src', rndDis.picture);
+			}
+	
 
-	// const $disasterPicture = $(rndDis).attr('src');
+	const applyDamage = (arg) => {	
 
-	console.log(rndDis);
-	}
+			village.population -= rndDis.popDam;
+						if (village.population < 0) {
+							village.population = 0;
+						}
+
+			village.hiRise -=rndDis.hiRiseDam;
+						if(village.hiRise < 0) {
+							village.hiRise = 0;
+						}
+			village.hut -= rndDis.hutDam;
+						if (village.hut < 0) {
+							village.hut = 0;
+						}
+				}
+
+	
 	
 	generateDisaster();
+	console.log(rndDis);
 
 	const rand = (Math.round(Math.random()* 6000)+ 3000);
 	
@@ -90,43 +108,48 @@ $('#create-btn').on('click', (e) => {
 			$('#playerVillage').append(finalDisaster);
 		 // apply damage
 
+	
+
 			if (rndDis.name =='Volcano') {
 				console.log("the Volcano damages");
-				village.population -= rndDis.popDam;
-				village.hut -=rndDis.hutDam;
-				village.hiRise -=rndDis.hiRiseDam;
-				console.log (village.population);
+				applyDamage();
+					
+			
 
 			} else if 
 
 			(rndDis.name =='Tsunami') {
 				console.log('the Tsunami cleans away');
-				village.population -= rndDis.popDam;
-				village.hut -=rndDis.hutDam;
-				village.hiRise -=rndDis.hiRiseDam;
-				console.log (village.population);
+				applyDamage();
+			
 
 			} else if
 
 			(rndDis.name == 'Tornado') {
 				console.log('the Tornado whirls away');
-				village.population -= rndDis.popDam;
-				village.hut -=rndDis.hutDam;
-				village.hiRise -=rndDis.hiRiseDam;
-				console.log (village.population);
+				applyDamage();
 
 			} else if
 			
 			(rndDis.name =='Fire') {
 				console.log('the Fire burns');
-				village.population -= rndDis.popDam;
-				village.hut -=rndDis.hutDam;
-				village.hiRise -=rndDis.hiRiseDam;
-				console.log (village.population);
+				applyDamage();
 			}
+		
 
-		}, (rand))
-			});
+
+		const playerScore = () => {
+
+			finalScore = (village.population + (village.hut * 10) + (village.hiRise * 30) + village.credits);
+
+			console.log(finalScore); 
+
+		}
+
+		playerScore();
+
+	}, (rand))
+	});
 			
 
 
