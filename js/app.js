@@ -61,11 +61,12 @@ $('#create-btn').on('click', (e) => {
 	$('#build p').text("When will the disaster hit?");
 	$('.gameButton').attr('disabled', false);
 	let finalDisaster;
+	let rndDis
 
 	const generateDisaster = (arg) => {
 	
 		const rnd= Math.floor(Math.random() * disaster.length)
-		const rndDis = disaster[rnd];
+		rndDis = disaster[rnd];
 		finalDisaster = $('<img>').attr('src', rndDis.picture);
 
 	// const $disasterPicture = $(rndDis).attr('src');
@@ -81,34 +82,52 @@ $('#create-btn').on('click', (e) => {
 		
 			// if rand seconds, then clear buildHut Interval
 			wait(rand);
-			console.log(finalDisaster);
-
-			$('#playerVillage').append(finalDisaster);
-			console.log($('#playerVillage'));
 
 			console.log('game over');
 			
 			clearInterval(interval);
 
-			// apply damage
-			// if($rndDis = 'volcano'){}
+			$('#playerVillage').append(finalDisaster);
+		 // apply damage
 
-			// if($playerEnvironment="mountain")
+			if (rndDis.name =='Volcano') {
+				console.log("the Volcano damages");
+				village.population -= rndDis.popDam;
+				village.hut -=rndDis.hutDam;
+				village.hiRise -=rndDis.hiRiseDam;
+				console.log (village.population);
+
+			} else if 
+
+			(rndDis.name =='Tsunami') {
+				console.log('the Tsunami cleans away');
+				village.population -= rndDis.popDam;
+				village.hut -=rndDis.hutDam;
+				village.hiRise -=rndDis.hiRiseDam;
+				console.log (village.population);
+
+			} else if
+
+			(rndDis.name == 'Tornado') {
+				console.log('the Tornado whirls away');
+				village.population -= rndDis.popDam;
+				village.hut -=rndDis.hutDam;
+				village.hiRise -=rndDis.hiRiseDam;
+				console.log (village.population);
+
+			} else if
 			
-			// $('#playerVillage').append(finalDisaster);
+			(rndDis.name =='Fire') {
+				console.log('the Fire burns');
+				village.population -= rndDis.popDam;
+				village.hut -=rndDis.hutDam;
+				village.hiRise -=rndDis.hiRiseDam;
+				console.log (village.population);
+			}
 
-
-			// if( =rand) {
-
-
-			// }
-
-
-		}, (rand) ) 
-	
-	
-
-})
+		}, (rand))
+			});
+			
 
 
 // once the timer runs out:
@@ -130,10 +149,10 @@ const village = {
 
 	
 		population: 20,
-		hut: 2,
+		hut: 0,
 		hiRise: 0,
 		credits: 200,
-		score: 40,
+		score: 20,
 
 		gamePlay () {
 			$('#gamePop').text(`Population: ${this.population}`);
@@ -196,6 +215,8 @@ const village = {
 				$('#gamePop').text(`Population: ${this.population}`);
 				const hiRisePicture1 = $('<img>').attr('src', 'images/hiRiseSized.jpg');
 
+
+
 				buildHiRiseInterval = setInterval(()=>{
 
 					// if 15 seconds, then append hiRise and clear interval
@@ -207,20 +228,10 @@ const village = {
 
 				}, 300)
 
-			
-
-
 
 			});
 			
 		},
-
-		damage() {
-			
-
-
-	},
-
 
 	}
 
@@ -261,7 +272,7 @@ const disaster = [
 		picture: 'images/Fire.png'
 
 	},	{
-		name: "Tsuanmi",
+		name: "Tsunami",
 		popDam: 40,
 		hutDam: 3,
 		hiRiseDam: 2,
