@@ -29,12 +29,15 @@ let $disasterPicture;
 
 let $finalScore;
 
+let player1Name;
+
 $('button').on('click', (e) => {
 	e.preventDefault();
-	if($villageName1){
+	if (player1Name) {
 		$('#villageInput').val('');
 		$villageName2 = $('#villageInput').val();
 		$('.inputs').append(`${$villageName2}!`);
+		console.log($villageName2);
 	} else {
 		$villageName1 = $('#villageInput').val();
 		$('.inputs').append(`${$villageName1}!`);
@@ -154,7 +157,7 @@ $('#create-btn').on('click', (e) => {
 
 	console.log(rndDis);
 
-	const rand = (Math.round(Math.random()* 6000)+ 3000);
+	const rand = (Math.round(Math.random()* 5000)+ 3000);
 	
 	const interval = setInterval(() => { 
 		
@@ -319,19 +322,20 @@ const village = {
 
 			$('.grid-container2').css('display', 'none');
 			$('.grid-container3').css('display', 'grid');
-		
+			
 
-			if (finalScore1) {
+			if (finalScore2) { 
+				$('#Player2 p').text($villageName2 + " " + finalScore2);
 
+
+			} else if (finalScore1) {
+
+				// $('#Player1 p').text(player1Name + " " + player1Score);
+				// $('#Player2 p').text($villageName2 + " " + finalScore2);
 				$('#Player1 p').text($villageName1 + " " + finalScore1);
 				sessionStorage.setItem('player1Score', finalScore1);
 				sessionStorage.setItem('player1Name', $villageName1);
 				$('#Player2 p').text("Ready to challenge?");
-
-			} else if (finalScore2) {
-
-				$('#Player1 p').text(player1Name + " " + player1Score);
-				$('#Player2 p').text($villageName2 + " " + finalScore2);
 
 			}
 		})
