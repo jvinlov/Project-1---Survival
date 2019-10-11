@@ -251,9 +251,7 @@ li {
 	display: none;
 	height: 90%;
 	width: 85%;
-	grid-template-rows: 50px 1fr;
-	grid-template-areas: "bnr"
-						 "."
+	justify-content: center;
 }
 
 #gameScores {
