@@ -54,24 +54,24 @@ $('button').on('click', (e) => {
 
 $('.pics_in_a_row').on('click', (e) =>{
 	e.preventDefault();
-	console.log('e.target: ', $(e.target))
+	// console.log('e.target: ', $(e.target))
 	if ($villageName2) {
 
 	$playerEnvironment2 = $(e.target).attr('id');
-	console.log('$playerEnvironment2: ', $playerEnvironment2)
+	// console.log('$playerEnvironment2: ', $playerEnvironment2)
 	$playerPicture2 = $(e.target).attr('src');
-	console.log('$playerPicture2: ', $playerPicture2)
+	// console.log('$playerPicture2: ', $playerPicture2)
 	villagePicture2 = $('<img>').attr('src', $playerPicture2);
-	console.log('villagePicture2: ', villagePicture2)
+	// console.log('villagePicture2: ', villagePicture2)
 	$('.environment h2').text(`You picked ${$playerEnvironment2}`);
 
 	} else if ($villageName1){
 		$playerEnvironment1 = $(e.target).attr('id');
-		console.log('$playerEnvironment1: ', $playerEnvironment1)
+		// console.log('$playerEnvironment1: ', $playerEnvironment1)
 		$playerPicture1 = $(e.target).attr('src');
-		console.log('$playerPicture1: ', $playerPicture1)
+		// console.log('$playerPicture1: ', $playerPicture1)
 		villagePicture1 = $('<img>').attr('src', $playerPicture1);
-		console.log('villagePicture1: ', villagePicture1)
+		// console.log('villagePicture1: ', villagePicture1)
 		$('.environment h2').text(`You picked ${$playerEnvironment1}`);
 	}
 
@@ -82,7 +82,7 @@ $('.pics_in_a_row').on('click', (e) =>{
 
 	$continu.on('click', (e) => {
 		e.preventDefault();
-		console.log('$playerPicture1 here: ', $playerPicture1)
+		// console.log('$playerPicture1 here: ', $playerPicture1)
 		$('.grid-container1').css('display', 'none');
 		$('.grid-container2').css('display', 'grid');
 
@@ -131,26 +131,27 @@ $('#create-btn').on('click', (e) => {
 			village.population -= rndDis.popDam;
 						if (village.population < 0) {
 							village.population = 0;
-						}
+						};
 
 			village.hiRise -=rndDis.hiRiseDam;
 						if(village.hiRise < 0) {
 							village.hiRise = 0;
-						}
+						};
 			village.hut -= rndDis.hutDam;
 						if (village.hut < 0) {
 							village.hut = 0;
-						}
+						};
 
 				$('#gameHuts').text(`Huts: ${village.hut} Damage: ${rndDis.hutDam}`);
 				$('#gameCredits').text(`Credits: ${village.credits}`);
-				$('#gameHiRise').text(`High Rise: ${village.hiRise} Damage: ${rndDis.hiRiseDam}`)
+				$('#gameHiRise').text(`High Rise: ${village.hiRise} Damage: ${rndDis.hiRiseDam}`);
 				$('#gamePop').text(`Population: ${village.population} Damage: ${rndDis.popDam}`);			
 				}
 
 	
 	
 	generateDisaster();
+
 	console.log(rndDis);
 
 	const rand = (Math.round(Math.random()* 6000)+ 3000);
@@ -169,13 +170,10 @@ $('#create-btn').on('click', (e) => {
 			$('#playerVillage').append(finalDisaster);
 		 // apply damage
 
-	
-
 			if (rndDis.name =='Volcano') {
 				console.log("the Volcano damages");
 				applyDamage();
 					
-			
 
 			} else if 
 
@@ -196,83 +194,29 @@ $('#create-btn').on('click', (e) => {
 				console.log('the Fire burns');
 				applyDamage();
 			}
-		
+			
 
+			$('.description').append($continu2)
 
-		const playerScore = () => {
+			const playerScore = () => {
 			if(finalScore1){
-			finalScore2 = (village.population + (village.hut * 10) + (village.hiRise * 30) + (village.credits /2));
+				finalScore2 = (village.population + (village.hut * 10) + (village.hiRise * 30) + (village.credits /2));
 				$('#playerVillage').append(`Your final score is: ${finalScore2}`);
-			} else {
+				$('#Player2 p').text(villageName2 + " " + finalScore2);
+
+			} else { 
 				finalScore1 = (village.population + (village.hut * 10) + (village.hiRise * 30) + (village.credits /2));
-					$('#playerVillage').append(`Your final score is: ${finalScore1}`);
+				$('#playerVillage').append(`Your final score is: ${finalScore1}`);
+				}
 			}
 
-			
-			
+			playerScore();
 
-		}
+		}, (rand))
 
-		playerScore();
-
-		$continu2.on('click', (e) => {
-		e.preventDefault();
-		$('.grid-container2').css('display', 'none');
-		$('.grid-container3').css('display', 'grid');
 		
-		$('#Player1 p').text($villageName1 + " " + finalScore1);
-
-		sessionStorage.setItem('player1Score', finalScore1);
-		sessionStorage.setItem('player1Name', $villageName1);
-
-		// $('#villageInput').text('');
-
-		$('#Player2 p').text("Ready to challenge?");
-
-		$('#pl2-btn').on('click', (e) => {
-
-			
-			
-			//  restart from grid contaner 1, all cleared
-			 $('#villageInput').val('');
-			// $playerEnvironment.reset();
-			// $playerPicture.reset();
-			// finalDisaster.reset();
-			// rndDis.reset();
-			// finalScore.reset();
-
-			$('.grid-container3').css('display', 'none');
-			$('.grid-container1').css('display', 'grid');
-
-
-
-		})
-
-		//	after Player 2, compare scores and declare winner
-
-		// if (pl1FinalScore > pl2FinalScore){
-		// 	console.log ("Player 1 Wins!");
-		// } else if
-
-		//  (pl1FinalScore === pl2FinalScore){
-		// 	console.log ("It's a tie!");
-		// } else if 
-
-		// (pl1FinalScore < pl2FinalScore){
-		// 	console.log ("Player 2 Wins!")
-		// } 
-
+		
 	});
-
-	$('.description').append($continu2)
-
-
-
-	}, (rand))
-	});
-
-
-
 const village = {
 
 	
@@ -356,10 +300,62 @@ const village = {
 
 
 			});
+
+
+		
+
 			
 		},
 
 	}
+		
+
+
+		
+
+		$continu2.on('click', (e) => {
+
+			e.preventDefault();
+
+			$('.grid-container2').css('display', 'none');
+			$('.grid-container3').css('display', 'grid');
+		
+
+			if (finalScore1) {
+
+				$('#Player1 p').text($villageName1 + " " + finalScore1);
+				sessionStorage.setItem('player1Score', finalScore1);
+				sessionStorage.setItem('player1Name', $villageName1);
+				$('#Player2 p').text("Ready to challenge?");
+
+			} else if (finalScore2) {
+
+				$('#Player1 p').text(player1Name + " " + player1Score);
+				$('#Player2 p').text($villageName2 + " " + finalScore2);
+
+			}
+		})
+
+		$('#pl2-btn').on('click', (e) => {
+
+			
+			location.reload();
+			
+
+			$('.grid-container3').css('display', 'none');
+			$('.grid-container1').css('display', 'grid');
+
+		})
+
+	
+
+	
+
+
+
+
+
+
 
 	
 
